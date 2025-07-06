@@ -1,7 +1,6 @@
 import pandas as pd
 
-# Prompt user for CSV file path
-csv_path = input('Enter the path to your CSV file: ')
+csv_path = 'sample.csv'  # Use the sample CSV file in the current folder
 
 try:
     df = pd.read_csv(csv_path)
