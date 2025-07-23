@@ -1,13 +1,39 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
-csv_path = 'sample.csv'  # Use the sample CSV file in the current folder
+# Load the sample.csv file
+df = pd.read_csv('sample.csv', parse_dates=['opened_at'])
 
-try:
-    df = pd.read_csv(csv_path)
-    print(f"\nLoaded '{csv_path}' successfully!")
-    print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
-    print(f"\nColumn names: {list(df.columns)}")
-    print("\nSummary statistics:")
-    print(df.describe(include='all'))
-except Exception as e:
-    print(f"Error loading CSV file: {e}")
+print("=== Incident Data Overview ===")
+print(f"Total incidents: {len(df)}")
+print(f"Columns: {list(df.columns)}\n")
+
+print("=== Incidents by State ===")
+print(df['state'].value_counts(), "\n")
+
+print("=== Incidents by Priority ===")
+print(df['priority'].value_counts(), "\n")
+
+print("=== Incidents by Category ===")
+print(df['category'].value_counts(), "\n")
+
+print("=== Incidents Opened Per Day ===")
+print(df['opened_at'].dt.date.value_counts().sort_index(), "\n")
+
+print("=== Incidents Assigned To ===")
+print(df['assigned_to'].value_counts(), "\n")
+
+# Correlation analysis (only for numeric columns)
+print("=== Correlation Matrix (numeric columns) ===")
+print(df.corr(numeric_only=True))
+
+# Visualize incidents per day
+incidents_per_day = df['opened_at'].dt.date.value_counts().sort_index()
+plt.figure(figsize=(8,4))
+plt.plot(incidents_per_day.index, incidents_per_day.values, marker='o')
+plt.title('Incidents Opened Per Day')
+plt.xlabel('Date')
+plt.ylabel('Number of Incidents')
+plt.grid(True)
+plt.tight_layout()
+plt.show()

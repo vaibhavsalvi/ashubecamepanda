@@ -1,5 +1,11 @@
-name,score
-Alice,85
-Bob,92
-Charlie,78
-Diana,88
+incident_number,opened_at,priority,state,category,assigned_to
+INC001,2025-07-01 09:15,1,New,Network,John Doe
+INC002,2025-07-01 10:30,2,In Progress,Software,Jane Smith
+INC003,2025-07-02 11:00,3,Resolved,Hardware,Emily Clark
+INC004,2025-07-02 13:45,2,New,Network,John Doe
+INC005,2025-07-03 08:20,1,Closed,Software,Michael Lee
+INC006,2025-07-03 14:10,3,In Progress,Hardware,Emily Clark
+INC007,2025-07-04 09:50,2,Resolved,Network,Jane Smith
+INC008,2025-07-04 16:05,1,Closed,Software,Michael Lee
+INC009,2025-07-05 10:25,2,New,Hardware,John Doe
+INC010,2025-07-05 15:30,3,Resolved,Network,Emily Clark
